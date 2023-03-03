@@ -294,3 +294,65 @@ a:hover{
 .adminDelSelect:focus{
   box-shadow: 0 0 10px black;
 }
+
+#game{
+  width: 200vh;
+  height: 100vh;
+  background-color: #ff0000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#information{
+  width: 18%;
+  height: 100%;
+  background-color: aliceblue;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+#title{
+  width: 100%;
+  height: 15%;
+  background-color: #484848;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#avatar{
+  width: 50%;
+  height: 100%;
+  background-color: #ff0000;
+}
+
+#count{
+  width: 50%;
+  height: 100%;
+  background-color: aquamarine;
+}
+
+#folds{
+  width: 100%;
+  height: 85%;
+  background-color: rgb(243, 186, 113);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#folder-item{
+  width: 95%;
+  height: 7vh;
+  background-color: #ff0000;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+  border-radius: 1.5vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2vh;
+}
