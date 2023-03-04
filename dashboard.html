@@ -6,30 +6,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
-    <div id="game">
-        <div id="information">
+    <div id="conteiner">
+        <div id="infos">
             <div id="title">
                 <div id="avatar">
-
+                    <img src="assets/img/logo1.png" alt="avatar">
                 </div>
                 <div id="count">
-                    <p></p>
+                    <p>GOLD: 2137</p>
                 </div>
             </div>
             <div id="folds">
-                <div id="folder-item">
-                    <p>Zadania</p>
+                <div class="folder-item" id="fold1">
+                    <p>Wyprawa</p>
                 </div>
-                <div id="folder-item">
+                <div class="folder-item" id="fold2">
                     <p>Ekwipunek</p>
                 </div>
-                <div id="folder-item">
+                <div class="folder-item" id="fold3">
                     <p>Zbrojownia</p>
                 </div>
-                <div id="folder-item">
+                <div class="folder-item logout" onclick="window.location.href = 'index.html';">
                     <p>Wyloguj sie</p>
+                </div>
+            </div>
+        </div>
+        <div id="game">
+            <div id="task-con">
+                <div class="task-inner">
+                    <h1>WYPRAWA</h1>
+                    <div id="task-box">
+                        <div class="task-item">
+                            <div class="task-title" id="task1">
+                                <h3>Wyprawa bosa natana</h3>
+                            </div>
+                            <div class="task-discription" id="dis1">
+    
+                            </div>
+                        </div>
+                        <div class="task-item">
+                            <div class="task-title" id="task2">
+                                <h3>Wyprawa bosa natana</h3>
+                            </div>
+                            <div class="task-discription" id="dis2">
+    
+                            </div>
+                        </div>
+                        <div class="task-item">
+                            <div class="task-title" id="task3">
+                                <h3>Wyprawa bosa natana</h3>
+                            </div>
+                            <div class="task-discription" id="dis3">
+    
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

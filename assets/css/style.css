@@ -295,29 +295,28 @@ a:hover{
   box-shadow: 0 0 10px black;
 }
 
-#game{
+#conteiner{
   width: 200vh;
   height: 100vh;
-  background-color: #ff0000;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-#information{
+#infos{
   width: 18%;
   height: 100%;
-  background-color: aliceblue;
+  background-color: rgb(56, 56, 56);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  border-radius: 2vh;
 }
 
 #title{
   width: 100%;
   height: 15%;
-  background-color: #484848;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -326,33 +325,112 @@ a:hover{
 #avatar{
   width: 50%;
   height: 100%;
-  background-color: #ff0000;
+}
+
+#avatar > img{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 3px solid red;
 }
 
 #count{
   width: 50%;
   height: 100%;
-  background-color: aquamarine;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 2vh;
 }
 
 #folds{
   width: 100%;
   height: 85%;
-  background-color: rgb(243, 186, 113);
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-#folder-item{
+.folder-item{
   width: 95%;
   height: 7vh;
-  background-color: #ff0000;
+  background-color: rgb(70, 70, 70);
   margin-top: 1vh;
   margin-bottom: 1vh;
   border-radius: 1.5vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2vh;
+  font-size: 2.5vh;
+  transition: all 0.2s ease-in-out;
+}
+
+.folder-item:hover{
+  cursor: pointer;
+  background-color: rgb(80, 80, 80);
+}
+
+#game{
+  width: 81%;
+  height: 100%;
+  background-color: rgb(56, 56, 56);
+  border-radius: 2vh;
+}
+
+#task-con{
+  width: 100%;
+  height: 100%;
+}
+
+.task-inner{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#task-box{
+  width: 60%;
+  height: auto;
+  background-color: rgb(70, 70, 70);
+  border-radius: 2vh;
+  margin-top: 5vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.task-item{
+  width: 98%;
+  height: auto;
+  min-height: 5vh;
+  max-height: 25vh;
+  background-color: rgb(42, 42, 42);
+  border-radius: 1.5vh;
+  overflow: hidden;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+}
+
+.task-title{
+  width: 100%;
+  height: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.task-title:hover{
+  cursor: pointer;
+}
+
+.task-discription{
+  width: 100%;
+  height: 15vh;
+  display: none;
+  border-top: 2px solid rgb(70, 70, 70);
 }

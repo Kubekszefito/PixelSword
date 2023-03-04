@@ -19,3 +19,37 @@ function loaderHide(){
     right.style.transition = "opacity 500ms";
     right.style.opacity = 1;
 }
+
+let war1 = false;
+
+$('#task1').click(function (){
+    if(war1){
+        $('#dis1').hide();
+        war1 = false;
+    }else{
+        $('#dis1').show();
+        war1 = true;
+    }
+})
+let war2 = false;
+
+$('#task2').click(function (){
+    if(war2){
+        $('#dis2').hide();
+        war2 = false;
+    }else{
+        $('#dis2').show();
+        war2 = true;
+    }
+})
+let war3 = false;
+
+$('#task3').click(function (){
+    if(war3){
+        $('#dis3').hide();
+        war3 = false;
+    }else{
+        $('#dis3').show();
+        war3 = true;
+    }
+})
