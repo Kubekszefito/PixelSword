@@ -56,10 +56,18 @@ $('#task3').click(function (){
 
 $('#fold1').click(function(){
     $('#task-con').show();
+    $('#shop-con').hide();
     $('#eq-con').hide();
 })
 
 $('#fold2').click(function(){
     $('#task-con').hide();
+    $('#shop-con').hide();
     $('#eq-con').show();
+})
+
+$('#fold3').click(function(){
+    $('#task-con').hide();
+    $('#eq-con').hide();
+    $('#shop-con').show();
 })

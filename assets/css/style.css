@@ -156,6 +156,11 @@ button:hover::before {
   align-items: center;
 }
 
+#discription{
+  width: 90%;
+  height: 10%;
+}
+
 .left{
   justify-content: left;
 }
@@ -238,19 +243,7 @@ a:hover{
   left: 0;
   font-size: 12px;
 }
-.loginClose{
-  position: fixed;
-  top: -20px;
-  right: 0;
-}
-#closeIco{
-  width: 30px;
-  transition: 300ms;
-  cursor: pointer;
-}
-#closeIco:hover{
-  transform: rotate(90deg);
-}
+
 .loginButton{
   border: 2px solid black;
   background-color: inherit;
@@ -378,7 +371,7 @@ a:hover{
   border-radius: 2vh;
 }
 
-#task-con, #eq-con{
+#task-con, #eq-con, #shop-con{
   width: 100%;
   height: 100%;
   display: none;
@@ -404,6 +397,12 @@ a:hover{
   display: flex;
   justify-content: space-evenly;
   align-items: flex-start;
+}
+
+.shop-inner{
+  width: 100%;
+  height: 100%;
+  display: flex;
 }
 
 #task-box{
@@ -588,7 +587,7 @@ a:hover{
   align-items: center;
 }
 
-#coin{
+#coin, #time{
   width: 5vh;
   height: 5vh;
 }
