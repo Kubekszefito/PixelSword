@@ -515,7 +515,7 @@ a:hover{
   border-radius: 1.5vh;
   overflow: hidden;
   display: flex;
-background-color: rgb(70, 70, 70);
+  background-color: rgb(70, 70, 70);
 }
 
 .upgrade-info{
@@ -560,7 +560,7 @@ background-color: rgb(70, 70, 70);
 
 .discription-title{
   width: 95%;
-  height: 50%;
+  height: 45%;
   display: flex;
   margin-left: auto;
   margin-right: auto;
@@ -575,14 +575,27 @@ background-color: rgb(70, 70, 70);
 
 .discription-loot{
   width: 100%;
-  height: 50%;
+  height: 25%;
   display: flex;
   justify-content: space-evenly;
+}
+
+.discription-button{
+  width: 100%;
+  height: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #coin{
   width: 5vh;
   height: 5vh;
+}
+
+#xp{
+  width: 4vh;
+  height: 3vh;
 }
 
 .loot-item{
@@ -591,4 +604,22 @@ background-color: rgb(70, 70, 70);
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+#task-button{
+  width: 11vh;
+  height: 4.5vh;
+  border: 0;
+  background-color: rgb(70, 70, 70);
+  font-weight: 400;
+  font-size: 2vh;
+  text-transform: uppercase;
+  border-radius: 1vh;
+  color: #fff;
+  transition: all 0.1s ease-in-out;
+}
+
+#task-button:hover{
+  cursor: pointer;
+  background-color: rgb(80, 80, 80);
 }
