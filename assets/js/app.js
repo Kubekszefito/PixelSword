@@ -53,3 +53,13 @@ $('#task3').click(function (){
         war3 = true;
     }
 })
+
+$('#fold1').click(function(){
+    $('#task-con').show();
+    $('#eq-con').hide();
+})
+
+$('#fold2').click(function(){
+    $('#task-con').hide();
+    $('#eq-con').show();
+})
