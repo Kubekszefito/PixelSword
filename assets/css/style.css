@@ -371,7 +371,7 @@ a:hover{
   border-radius: 2vh;
 }
 
-#task-con, #eq-con, #shop-con{
+#task-con, #eq-con,  #shop-con{
   width: 100%;
   height: 100%;
   display: none;
@@ -496,11 +496,19 @@ a:hover{
 }
 
 .item-box{
-  width: 18vh;
-  height: 18vh;
+  width: 20vh;
+  height: 19vh;
   border-radius: 2vh;
   border: 2px solid black;
   background-color: rgba(70, 70, 70, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#item-eq{
+  width: 90%;
+  height: 90%;
 }
 
 .charakter-info-item{
@@ -711,4 +719,21 @@ a:hover{
 #buy:hover{
   cursor: pointer;
   background-color: rgb(80, 80, 80);
+}
+
+#task-active{
+  width: 25vh;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#task-active > h1{
+  font-size: 6vh;
+}
+
+#task-active > p{
+  font-size: 2.5vh;
 }
