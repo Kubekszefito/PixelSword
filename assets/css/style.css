@@ -371,10 +371,15 @@ a:hover{
   border-radius: 2vh;
 }
 
-#task-con, #eq-con, #shop-con{
+#task-con, #shop-con{
   width: 100%;
   height: 100%;
   display: none;
+}
+
+#eq-con{
+  width: 100%;
+  height: 100%;
 }
 
 /* #eq-con{

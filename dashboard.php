@@ -1,3 +1,18 @@
+<?php session_start();
+    if (!isset($_SESSION['logged123']))
+    {
+        header('Location: login.php');
+        exit();
+    }
+    if(isset($_GET["link"])){
+        $action = $_GET["link"];
+        switch($action){
+            case "ekwipunek":
+                echo("<script>$('#task-con').hide(); $('#shop-con').hide(); $('#eq-con').show();</script>");
+                break;
+        }
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,10 +28,19 @@
         <div id="infos">
             <div id="title">
                 <div id="avatar">
-                    <img src="assets/img/logo1.png" alt="avatar">
+                    <?php echo("<img src='assets/img/".$_SESSION["avatar"]."' alt='avatar'>"); ?>
                 </div>
                 <div id="count">
-                    <img src="assets/img/coin.png" alt="pieniądz" id="coin"><p>2137</p>
+                    <img src="assets/img/coin.png" alt="pieniądz" id="coin">
+                    <p>
+                        <?php
+                            $connect = @new mysqli("localhost", "root", "", "pixelsword");
+                            $sql = "SELECT `coin` FROM `users` WHERE id = ".$_SESSION["id"]."";
+                            $result = mysqli_query($connect, $sql);
+                            $row = mysqli_fetch_assoc($result);
+                            echo($row["coin"]);
+                        ?>
+                    </p>
                 </div>
             </div>
             <div id="folds">
@@ -29,7 +53,7 @@
                 <div class="folder-item" id="fold3">
                     <p>Zbrojownia</p>
                 </div>
-                <div class="folder-item logout" onclick="window.location.href = 'index.html';">
+                <div class="folder-item logout" onclick="window.location.href = 'logout.php';">
                     <p>Wyloguj sie</p>
                 </div>
             </div>
@@ -39,161 +63,143 @@
                 <div class="task-inner">
                     <h1>WYPRAWA</h1>
                     <div id="task-box">
-                        <div class="task-item">
-                            <div class="task-title" id="task1">
-                                <h3>Świerkowy las</h3>
-                            </div>
-                            <div class="task-discription" id="dis1">
-                                <div class="discription-title">
-                                    <h3>Lesny stary druid</h3>
-                                    <p>Las w ktorym rosna swierki i czasem deby latwe miejsce do eksploracji.
-                                     Majacy 171cm wzrostu druid dzieki swoim miksturą staje sie silny i zly</p>
-                                </div>
-                                <div class="discription-loot">
-                                    <div class="loot-item">
-                                        <img src="assets/img/coin.png" alt="pieniądz" id="coin">
-                                        <p>120</p>
+                        <?php
+                            $connect = @new mysqli("localhost", "root", "", "pixelsword");
+                            $numbers = array();
+
+                            while (count($numbers) < 3) {
+                                $random = rand(1, 6);
+                                if (!in_array($random, $numbers)) {
+                                    $numbers[] = $random;
+                                }
+                            }
+
+                            foreach ($numbers as $i => $random) {
+                                $sql = "SELECT * FROM `task` WHERE id='$random'";
+                                $result = mysqli_query($connect, $sql);
+                                $row = mysqli_fetch_assoc($result);
+                                echo("
+                                <div class='task-item'>
+                                    <div class='task-title' id='task".($i+1)."'>
+                                        <h3>".$row["title"]."</h3>
                                     </div>
-                                    <div class="loot-item">
-                                        <img src="assets/img/xp.png" alt="xp" id="xp">
-                                        <p>120</p>
+                                    <div class='task-discription' id='dis".($i+1)."'>
+                                        <div class='discription-title'>
+                                            <h3>".$row["boss"]."</h3>
+                                            <p>".$row["discription"]."</p>
+                                        </div>
+                                        <div class='discription-loot'>
+                                            <div class='loot-item'>
+                                                <img src='assets/img/coin.png' alt='pieniądz' id='coin'>
+                                                <p>".$row["coin"]."</p>
+                                            </div>
+                                            <div class='loot-item'>
+                                                <img src='assets/img/xp.png' alt='xp' id='xp'>
+                                                <p>".$row["xp"]."</p>
+                                            </div>
+                                            <div class='loot-item'>
+                                                <img src='assets/img/time.png' alt='pieniądz' id='time'>
+                                                <p>".$row["time"]."s</p>
+                                            </div>
+                                        </div>
+                                        <div class='discription-button'> 
+                                            <form action='index.html' method='post'>
+                                                <input type='submit' name='submit' id='task-button' value='Przyjmij'>
+                                            </form>
+                                        </div>
                                     </div>
-                                    <div class="loot-item">
-                                        <img src="assets/img/time.png" alt="pieniądz" id="time">
-                                        <p>1:20s</p>
-                                    </div>
-                                </div>
-                                <div class="discription-button"> 
-                                    <form action="index.html" method="post">
-                                        <input type="submit" name="submit" id="task-button" value="Przyjmij">
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="task-item">
-                            <div class="task-title" id="task2">
-                                <h3>Świerkowy las</h3>
-                            </div>
-                            <div class="task-discription" id="dis2">
-                                <div class="discription-title">
-                                    <h3>Lesny stary druid</h3>
-                                    <p>Las w ktorym rosna swierki i czasem deby latwe miejsce do eksploracji.
-                                     Majacy 171cm wzrostu druid dzieki swoim miksturą staje sie silny i zly</p>
-                                </div>
-                                <div class="discription-loot">
-                                    <div class="loot-item">
-                                        <img src="assets/img/coin.png" alt="pieniądz" id="coin">
-                                        <p>120</p>
-                                    </div>
-                                    <div class="loot-item">
-                                        <img src="assets/img/xp.png" alt="xp" id="xp">
-                                        <p>120</p>
-                                    </div>
-                                    <div class="loot-item">
-                                        <img src="assets/img/time.png" alt="pieniądz" id="time">
-                                        <p>1:20s</p>
-                                    </div>
-                                </div>
-                                <div class="discription-button"> 
-                                    <form action="index.html" method="post">
-                                        <input type="submit" name="submit" id="task-button" value="Przyjmij">
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="task-item">
-                            <div class="task-title" id="task3">
-                                <h3>Świerkowy las</h3>
-                            </div>
-                            <div class="task-discription" id="dis3">
-                                <div class="discription-title">
-                                    <h3>Lesny stary druid</h3>
-                                    <p>Las w ktorym rosna swierki i czasem deby latwe miejsce do eksploracji.
-                                     Majacy 171cm wzrostu druid dzieki swoim miksturą staje sie silny i zly</p>
-                                </div>
-                                <div class="discription-loot">
-                                    <div class="loot-item">
-                                        <img src="assets/img/coin.png" alt="pieniądz" id="coin">
-                                        <p>120</p>
-                                    </div>
-                                    <div class="loot-item">
-                                        <img src="assets/img/xp.png" alt="xp" id="xp">
-                                        <p>120</p>
-                                    </div>
-                                    <div class="loot-item">
-                                        <img src="assets/img/time.png" alt="pieniądz" id="time">
-                                        <p>1:20s</p>
-                                    </div>
-                                </div>
-                                <div class="discription-button"> 
-                                    <form action="index.html" method="post">
-                                        <input type="submit" name="submit" id="task-button" value="Przyjmij">
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
+                                </div>");
+                            }
+                        ?>
                     </div>
                 </div>
             </div>
             <div id="eq-con">
                 <div class="eq-inner">
                     <div id="charakter">
-                        <div class="charakter-info">
-                            <div class="charakter-info-item"><p>Nazwa postaci:</p><p>Kubek</p></div>
-                            <div class="charakter-info-item"><p>Poziom postaci:</p><p>20lvl</p></div>
-                            <div class="charakter-info-item"><p>Klasa postaci:</p><p>Łucznik</p></div>
-                        </div>
-                        <div class="upgrades">
-                            <div class="upgrade-punkt"><p>Dostępne punkty ulepszeń: 1</p></div>
-                            <div class="upgrade-item">
-                                <div class="upgrade-info">
-                                    <p>Inteligencja</p>
-                                    <p>20</p>
+                        <?php
+                            $connect = @new mysqli("localhost", "root", "", "pixelsword");
+                            $sql = "SELECT users.login, users.inteligencja, users.wytrzymalosc, users.sila,
+                             users.szczescie, users.level, users.levelpoints, users.PU, character.title
+                             FROM `users` INNER JOIN `character` ON users.klasa = character.id WHERE users.id=".$_SESSION["id"]."";
+                            $result = mysqli_query($connect, $sql);
+                            $row = mysqli_fetch_row($result);
+                            if(isset($_POST["submit-upgrade"])){
+                                $action = $_POST["option"];
+                                if($row[7] > 0){
+                                    $sql2 = "UPDATE `users` SET PU=PU-1 WHERE id=".$_SESSION["id"]."";
+                                    $sql3 = "UPDATE `users` SET $action=$action+1 WHERE id=".$_SESSION["id"]."";
+                                    mysqli_query($connect, $sql2);
+                                    mysqli_query($connect, $sql3);
+                                    // header('Location: ?link=ekwipunek');
+                                    echo("<script>window.location.href = '?link=ekwipunek';</script>");
+                                }else{
+                                    echo("<script>$('#task-con').hide(); $('#shop-con').hide(); $('#eq-con').show();</script>");
+                                }
+                            }
+                            echo('
+                            <div class="charakter-info">
+                                <div class="charakter-info-item"><p>Nazwa postaci:</p><p>'.$row[0].'</p></div>
+                                <div class="charakter-info-item"><p>Poziom postaci:</p><p>'.$row[5].' lvl</p></div>
+                                <div class="charakter-info-item"><p>Klasa postaci:</p><p>'.$row[8].'</p></div>
+                            </div>
+                            <div class="upgrades">
+                                <div class="upgrade-punkt"><p>Dostępne punkty ulepszeń: '.$row[7].'</p></div>
+                                <div class="upgrade-item">
+                                    <div class="upgrade-info">
+                                        <p>Inteligencja</p>
+                                        <p>'.$row[1].'</p>
+                                    </div>
+                                    <div class="upgrade-button">
+                                        <form action="dashboard.php" method="post">
+                                            <input type="hidden" name="option" value="inteligencja">
+                                            <input type="submit" name="submit-upgrade" id="plus" value="+">
+                                        </form>
+                                    </div>
                                 </div>
-                                <div class="upgrade-button">
-                                    <form action="index.html" method="post">
-                                        <input type="submit" name="submit" id="plus" value="+">
-                                    </form>
+                                <div class="upgrade-item">
+                                    <div class="upgrade-info">
+                                        <p>Wytrzymałość</p>
+                                        <p>'.$row[2].'</p>
+                                    </div>
+                                    <div class="upgrade-button">
+                                        <form action="dashboard.php" method="post">
+                                            <input type="hidden" name="option" value="wytrzymalosc">
+                                            <input type="submit" name="submit-upgrade" id="plus" value="+">
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="upgrade-item">
+                                    <div class="upgrade-info">
+                                        <p>Siła</p>
+                                        <p>'.$row[3].'</p>
+                                    </div>
+                                    <div class="upgrade-button">
+                                        <form action="dashboard.php" method="post">
+                                            <input type="hidden" name="option" value="sila">
+                                            <input type="submit" name="submit-upgrade" id="plus" value="+">
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="upgrade-item">
+                                    <div class="upgrade-info">
+                                        <p>Szczęście</p>
+                                        <p>'.$row[4].'</p>
+                                    </div>
+                                    <div class="upgrade-button">
+                                        <form action="dashboard.php" method="post">
+                                            <input type="hidden" name="option" value="szczescie">
+                                            <input type="submit" name="submit-upgrade" id="plus" value="+">
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="upgrade-item">
-                                <div class="upgrade-info">
-                                    <p>Wytrzymałość</p>
-                                    <p>20</p>
-                                </div>
-                                <div class="upgrade-button">
-                                    <form action="index.html" method="post">
-                                        <input type="submit" name="submit" id="plus" value="+">
-                                    </form>
-                                </div>
-                            </div>
-                            <div class="upgrade-item">
-                                <div class="upgrade-info">
-                                    <p>Siła</p>
-                                    <p>20</p>
-                                </div>
-                                <div class="upgrade-button">
-                                    <form action="index.html" method="post">
-                                        <input type="submit" name="submit" id="plus" value="+">
-                                    </form>
-                                </div>
-                            </div>
-                            <div class="upgrade-item">
-                                <div class="upgrade-info">
-                                    <p>Szczęście</p>
-                                    <p>20</p>
-                                </div>
-                                <div class="upgrade-button">
-                                    <form action="index.html" method="post">
-                                        <input type="submit" name="submit" id="plus" value="+">
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
+                            ');
+                        ?>
                     </div>
                     <div id="eq">
                         <div class="item-box">
-                            
+
                         </div>
                         <div class="item-box">
 
