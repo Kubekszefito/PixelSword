@@ -55,9 +55,9 @@
                                         $passwordrep = $_POST["password-rep"];
                                         $character = $_POST["character"];
                                         $connect = mysqli_connect("localhost", "root", "", "pixelsword");
-                                        $sql = ("SELECT * FROM `users` WHERE login='$login'");
-                                        $sql2 = ("INSERT INTO `users`(`id`, `login`, `password`, `inteligejcna`, `wytrzymalosc`, `sila`, `szczescie`, `level`, `levelpoints`, `klasa`, `PU`, `coin`)
-                                        VALUES ('','$login','$password','0','0','0','0','1','0','$character','0','1')");
+                                        $sql = ("SELECT `login` FROM `users` WHERE login='$login'");
+                                        $sql2 = "INSERT INTO `users`(`id`, `login`, `password`, `inteligencja`, `wytrzymalosc`, `sila`, `szczescie`, `level`, `levelpoints`, `klasa`, `PU`, `coin`)
+                                         VALUES ('','$login','$password','0','0','0','0','1','0','$character','0','0')";
                                         $result = mysqli_query($connect, $sql);
                                         if(!empty($login) && !empty($password) && !empty($passwordrep) && $character!=0){
                                             if(mysqli_num_rows($result)==0){
@@ -71,7 +71,6 @@
                                                 echo("Taki login juz istnieje!");
                                             }
                                         }else{
-                                            var_dump($character);
                                             echo("Wypełnij wszystkie pola!");
                                         }
                                     }
