@@ -80,22 +80,16 @@
         
     </div>
     <script>
-        window.addEventListener("load", function(){
-            let data = new Date(new Date().getTime() + 2000);
-
-            let timer = setInterval(function () {
-
-            let now = new Date().getTime();
-            let c = data - now;
-
-            document.getElementById('timer').innerHTML = `Pozostały czas: ${Math.floor((c % (1000 * 60)) / 1000)} sekund`;
-
-            if(c <= 0) {
-                clearInterval(timer);
+        window.addEventListener("load", timer);
+        let time = 5;
+        function timer(){
+            document.getElementById('timer').innerHTML = `Pozostały czas: ${time} sekund`;
+            if(time == 0){
                 window.location.href = '?link=wyprawa';
             }
-            }, 1000);
-        })
+            time--;
+            setTimeout("timer()", 1000);
+        }
     </script>
 </body>
 </html>
